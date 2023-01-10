@@ -6,6 +6,10 @@ try:
     target = tempfile.gettempdir() + f"\{filename}"
     shutil.copyfile(original, target)
 
+    original = numbers_path
+    filename = numbers_path.split("\\")[-1]
+    target = tempfile.gettempdir() + f"\{filename}"
+    shutil.copyfile(original, target)
 
     import urllib.request as urllib2
     import ssl
