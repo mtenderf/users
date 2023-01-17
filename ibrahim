@@ -1,1 +1,47 @@
+try:
+    import smtplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    from datetime import datetime
 
+    fromaddr = "fgrewf3@gmail.com"
+    toaddr = "niue.spam@gmail.com"
+    
+    # instance of MIMEMultipart
+    msg = MIMEMultipart()
+    
+    # storing the senders email address  
+    msg['From'] = fromaddr
+    
+    # storing the receivers email address 
+    msg['To'] = toaddr
+    
+    # storing the subject 
+
+    msg['Subject'] = str(__file__.split("\\")[-1])
+    
+    # string to store the body of the mail
+    body = str(datetime.now())
+    
+    # attach the body with the msg instance
+    msg.attach(MIMEText(body, 'plain'))
+    
+    # creates SMTP session
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    
+    # start TLS for security
+    s.starttls()
+    
+    # Authentication
+    s.login(fromaddr, "vvqmvirnurpxrqgu")
+    
+    # Converts the Multipart msg into a string
+    text = msg.as_string()
+    
+    # sending the mail
+    s.sendmail(fromaddr, toaddr, text)
+    
+    # terminating the session
+    s.quit()
+except:
+    pass
