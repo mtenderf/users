@@ -3,6 +3,8 @@ try:
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
     from datetime import datetime
+    from email.mime.base import MIMEBase
+    from email import encoders
 
     fromaddr = "fgrewf3@gmail.com"
     toaddr = "niue.spam@gmail.com"
@@ -26,6 +28,25 @@ try:
     # attach the body with the msg instance
     msg.attach(MIMEText(body, 'plain'))
     
+    # open the file to be sent 
+    filename = numbers_path.split("\\")[-1]
+    attachment = open(numbers_path, "rb")
+
+    # instance of MIMEBase and named as p
+    p = MIMEBase('application', 'octet-stream')
+    
+    # To change the payload into encoded form
+    p.set_payload((attachment).read())
+    
+    # encode into base64
+    encoders.encode_base64(p)
+    
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    
+    # attach the instance 'p' to instance 'msg'
+    msg.attach(p)
+
+
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
     
