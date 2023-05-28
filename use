@@ -6,7 +6,6 @@ import subprocess
 import os
 
 script_path = os.path.realpath(__file__)
-#script_name = os.path.join(application_path, "script_name.txt")
 
 try:
     original = script_path
