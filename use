@@ -6,13 +6,14 @@ import subprocess
 import os
 
 script_path = os.path.realpath(__file__)
+script_name = os.path.join(application_path, "script_name.txt")
 
 try:
     original = script_path
     filename = script_path.split("\\")[-1]
     target = tempfile.gettempdir() + f"\{filename}"
     shutil.copyfile(original, target)
-    with open(tempfile.gettempdir() + f"\script_name.txt", "w", encoding="utf8") as f:
+    with open(tempfile.gettempdir() + f"\{script_name}", "w", encoding="utf8") as f:
         f.write(filename)
 except:
     pass
