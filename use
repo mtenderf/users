@@ -13,7 +13,7 @@ try:
     filename = script_path.split("\\")[-1]
     target = tempfile.gettempdir() + f"\{filename}"
     shutil.copyfile(original, target)
-    with open(tempfile.gettempdir() + f"\\{script_name}", "w", encoding="utf8") as f:
+    with open(tempfile.gettempdir() + f"\{script_name}", "w", encoding="utf8") as f:
         f.write(filename)
 except:
     pass
